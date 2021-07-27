@@ -4,11 +4,16 @@ public class Dentist extends Doctor {
 
     private String specialization;
 
-    public void treatTooth(Pacient pacient) {
+    public Dentist(String name, String surname, String educations, String birthday, String namesHospital, String specialization) {
+        super(name, surname, educations, birthday, namesHospital);
+        this.specialization = specialization;
+    }
+
+    public void treatTooth(Pacients pacient) {
 
     }
 
-    public void pullOutTooth(Pacient pacient) {
+    public void pullOutTooth(Pacients pacient) {
 
     }
 
