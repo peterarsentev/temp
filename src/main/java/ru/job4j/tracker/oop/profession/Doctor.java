@@ -2,9 +2,9 @@ package ru.job4j.tracker.oop.profession;
 
 public class Doctor {
 
-    private String nameHospital;
+    private String namesHospital;
 
-    public Diagnosis heal(Pacient pacient) {
-        return new Diagnosis();
+    public Diagnos heal(Pacients pacient) {
+        return new Diagnos();
     }
 }

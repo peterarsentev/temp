@@ -1,4 +1,4 @@
 package ru.job4j.tracker.oop.profession;
 
-public class Pacient {
+public class Projects {
 }
