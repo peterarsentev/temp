@@ -15,12 +15,11 @@ public class Matches {
             int matches = Integer.parseInt(input.nextLine());
             if (matches > 3 || matches <= 0) {
                 System.out.println("Вы ввели неправильное число!"
-                        + " Вы пропускаете ход");
-                turn = !turn;
-            } else {
-                turn = !turn;
-                count -= matches;
+                        + " Введите заново");
+                continue;
             }
+            turn = !turn;
+            count -= matches;
             System.out.println("На столе осталось " + count + " спичек");
         }
         if (!turn) {
