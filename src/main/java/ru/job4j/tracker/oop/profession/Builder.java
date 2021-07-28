@@ -8,6 +8,11 @@ public class Builder extends Engineer {
         super(name, surname, educations, birthday, branch);
     }
 
+    public Builder(String name, String surname, String educations, String birthday, String branch, String buildingType) {
+        super(name, surname, educations, birthday, branch);
+        this.buildingType = buildingType;
+    }
+
     public Building building(Projects projects) {
         return new Building();
     }
