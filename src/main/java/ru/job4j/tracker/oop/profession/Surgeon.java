@@ -1,6 +1,6 @@
 package ru.job4j.tracker.oop.profession;
 
-public class Surgeon {
+public class Surgeon extends Doctor{
 
     private String childOrAdult;
 

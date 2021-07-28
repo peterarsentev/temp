@@ -3,14 +3,14 @@ package ru.job4j.pojo;
 public class Book {
 
     private String name;
-    private int numbersPages;
+    private int pages;
 
     public Book() {
     }
 
-    public Book(String name, int numbersPages) {
+    public Book(String name, int pages) {
         this.name = name;
-        this.numbersPages = numbersPages;
+        this.pages = pages;
     }
 
     public String getName() {
@@ -21,11 +21,11 @@ public class Book {
         this.name = name;
     }
 
-    public int getNumbersPages() {
-        return numbersPages;
+    public int getPages() {
+        return pages;
     }
 
-    public void setNumbersPages(int numbersPages) {
-        this.numbersPages = numbersPages;
+    public void setPages(int pages) {
+        this.pages = pages;
     }
 }
