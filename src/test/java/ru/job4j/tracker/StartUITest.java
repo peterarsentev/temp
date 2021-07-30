@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
@@ -58,6 +58,56 @@ public class StartUITest {
         };
         new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
+    }
+
+    @Test
+    public void whenFindAllItem() {
+        Tracker tracker = new Tracker();
+        Output output = new StubOutput();
+        Item item = tracker.add(new Item("FindAll item"));
+        Input in = new StubInput(
+                new String[] {"0", "1"}
+        );
+        UserAction[] actions = {
+                new FindAllAction(output),
+                new ExitAction()
+        };
+        new StartUI(output).init(in, tracker, actions);
+        assertTrue(output.toString().contains(item.toString()));
+    }
+
+    @Test
+    public void whenFindByName() {
+        Tracker tracker = new Tracker();
+        Output output = new StubOutput();
+        Item item1 = tracker.add(new Item("Find name1"));
+        Item item2 = tracker.add(new Item("Find name2"));
+        Input in = new StubInput(
+                new String[] {"0", "Find name2", "1"}
+        );
+        UserAction[] actions = {
+                new FindByNameAction(output),
+                new ExitAction()
+        };
+        new StartUI(output).init(in, tracker, actions);
+        assertTrue(output.toString().contains(item2.toString()));
+    }
+
+    @Test
+    public void whenFindById() {
+        Tracker tracker = new Tracker();
+        Output output = new StubOutput();
+        Item item1 = tracker.add(new Item("Find name1"));
+        Item item2 = tracker.add(new Item("Find name2"));
+        Input in = new StubInput(
+                new String[] {"0", "1", "1"}
+        );
+        UserAction[] actions = {
+                new FindByIdAction(output),
+                new ExitAction()
+        };
+        new StartUI(output).init(in, tracker, actions);
+        assertTrue(output.toString().contains(item1.toString()));
     }
 
 }
