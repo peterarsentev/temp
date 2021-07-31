@@ -70,8 +70,8 @@ public class StartUITest {
                 new FindAllAction(output),
                 new ExitAction()
         };
-        new StartUI(output).init(in, tracker, actions);
-        assertTrue(output.toString().contains(item.toString()));
+        new StartUI(new ConsoleOutput()).init(in, tracker, actions);
+        assertThat(output.toString(), is("=== Show all items ====\\r\\n" + item + "\\r\\n"));
     }
 
     @Test
