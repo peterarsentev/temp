@@ -62,6 +62,7 @@ public class StartUITest {
     public void whenFindAllItem() {
         Tracker tracker = new Tracker();
         Output output = new StubOutput();
+        String ln = System.lineSeparator();
         Item item = tracker.add(new Item("FindAll item"));
         Input in = new StubInput(
                 new String[] {"0", "1"}
@@ -70,14 +71,17 @@ public class StartUITest {
                 new FindAllAction(output),
                 new ExitAction()
         };
-        new StartUI(new ConsoleOutput()).init(in, tracker, actions);
-        assertThat(output.toString(), is("=== Show all items ====\\r\\n" + item + "\\r\\n"));
+        new StartUI(output).init(in, tracker, actions);
+        assertThat(output.toString(), is("Menu." + ln + "0. Show all items" + ln + "1. Exit program."
+                + ln + "=== Show all items ====" + ln + item + ln + "Menu."
+                + ln + "0. Show all items" + ln + "1. Exit program." + ln));
     }
 
     @Test
     public void whenFindByName() {
         Tracker tracker = new Tracker();
         Output output = new StubOutput();
+        String ln = System.lineSeparator();
         Item item1 = tracker.add(new Item("Find name1"));
         Item item2 = tracker.add(new Item("Find name2"));
         Input in = new StubInput(
@@ -88,24 +92,30 @@ public class StartUITest {
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertTrue(output.toString().contains(item2.toString()));
+        assertThat(output.toString(), is("Menu." + ln + "0. Find items by name" + ln + "1. Exit program."
+                + ln + "=== Find items by name ====" + ln + item2 + ln + "Menu."
+                + ln + "0. Find items by name" + ln + "1. Exit program." + ln));
     }
 
     @Test
     public void whenFindById() {
         Tracker tracker = new Tracker();
         Output output = new StubOutput();
+        String ln = System.lineSeparator();
         Item item1 = tracker.add(new Item("Find name1"));
         Item item2 = tracker.add(new Item("Find name2"));
+        int i = item1.getId();
         Input in = new StubInput(
-                new String[] {"0", "1", "1"}
+                new String[] {"0", String.valueOf(i), "1"}
         );
         UserAction[] actions = {
                 new FindByIdAction(output),
                 new ExitAction()
         };
         new StartUI(output).init(in, tracker, actions);
-        assertTrue(output.toString().contains(item1.toString()));
+        assertThat(output.toString(), is("Menu." + ln + "0. Find item by id" + ln + "1. Exit program."
+                + ln + "=== Find item by id ====" + ln + item1 + ln + "Menu."
+                + ln + "0. Find item by id" + ln + "1. Exit program." + ln));
     }
 
 }
