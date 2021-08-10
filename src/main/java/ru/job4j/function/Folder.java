@@ -1,5 +1,6 @@
 package ru.job4j.function;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Folder {
@@ -43,4 +44,7 @@ public class Folder {
                 + ", size=" + size
                 + '}';
     }
+
+    Comparator<String> comparator = (l, r) -> l.compareTo(r);
+
 }
