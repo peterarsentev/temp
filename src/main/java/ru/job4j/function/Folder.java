@@ -45,6 +45,4 @@ public class Folder {
                 + '}';
     }
 
-    Comparator<String> comparator = (l, r) -> l.compareTo(r);
-
 }
