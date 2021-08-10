@@ -71,7 +71,8 @@ public class StartUITest {
         actions.add(new FindAllAction(output));
         actions.add(new ExitAction());
         new StartUI(output).init(in, tracker, actions);
-        assertThat(output.toString(), is("Menu." + ln + "0. Show all items" + ln + "1. Exit program."
+        assertThat(output.toString(), is("Menu." + ln + "0. Show all items"
+                + ln + "1. Exit program."
                 + ln + "=== Show all items ====" + ln + item + ln + "Menu."
                 + ln + "0. Show all items" + ln + "1. Exit program." + ln));
     }
@@ -90,7 +91,8 @@ public class StartUITest {
         actions.add(new FindByNameAction(output));
         actions.add(new ExitAction());
         new StartUI(output).init(in, tracker, actions);
-        assertThat(output.toString(), is("Menu." + ln + "0. Find items by name" + ln + "1. Exit program."
+        assertThat(output.toString(), is("Menu." + ln + "0. Find items by name"
+                + ln + "1. Exit program."
                 + ln + "=== Find items by name ====" + ln + item2 + ln + "Menu."
                 + ln + "0. Find items by name" + ln + "1. Exit program." + ln));
     }
@@ -110,7 +112,8 @@ public class StartUITest {
         actions.add(new FindByIdAction(output));
         actions.add(new ExitAction());
         new StartUI(output).init(in, tracker, actions);
-        assertThat(output.toString(), is("Menu." + ln + "0. Find item by id" + ln + "1. Exit program."
+        assertThat(output.toString(), is("Menu." + ln + "0. Find item by id"
+                + ln + "1. Exit program."
                 + ln + "=== Find item by id ====" + ln + item1 + ln + "Menu."
                 + ln + "0. Find item by id" + ln + "1. Exit program." + ln));
     }
