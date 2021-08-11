@@ -44,7 +44,4 @@ public class Folder {
                 + ", size=" + size
                 + '}';
     }
-
-    Comparator<String> comparator = (l, r) -> l.compareTo(r);
-
 }
