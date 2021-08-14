@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 
 import static org.hamcrest.Matchers.is;
@@ -64,6 +65,36 @@ public class SchoolTest {
         expected.add(new Student(30, "Surname3"));
         expected.add(new Student(40, "Surname4"));
         assertThat(rsl, is(expected));
+    }
+
+    @Test
+    public void whenCollectMap() {
+        List<Student> students = List.of(
+                new Student(10, "Surname1"),
+                new Student(30, "Surname3"),
+                new Student(40, "Surname4"),
+                new Student(60, "Surname6"),
+                new Student(90, "Surname9")
+        );
+        School sc = new School();
+        Map<String, Student> rsl = sc.collectMap(students);
+        Student student = new Student(40, "Surname4");
+        assertThat(rsl.get("Surname4"), is(student));
+    }
+
+    @Test
+    public void whenCollectMapDublicat() {
+        List<Student> students = List.of(
+                new Student(10, "Surname1"),
+                new Student(30, "Surname3"),
+                new Student(40, "Surname4"),
+                new Student(60, "Surname4"),
+                new Student(90, "Surname9")
+        );
+        School sc = new School();
+        Map<String, Student> rsl = sc.collectMap(students);
+        Student student = new Student(60, "Surname4");
+        assertThat(rsl.get("Surname4"), is(student));
     }
 
 }
