@@ -15,7 +15,7 @@ public class ProfilesTest {
     public void whenCollectClassA() {
         List<Profile> students = List.of(
                 new Profile(new Address("Ulan", "Gagarina", 45, 3)),
-                new Profile (new Address("Moscow", "Lenina", 5, 1))
+                new Profile(new Address("Moscow", "Lenina", 5, 1))
         );
         Profiles profiles = new Profiles();
         List<Address> stAddress = profiles.collect(students);
@@ -26,25 +26,12 @@ public class ProfilesTest {
     public void whenSortDublicat() {
     List<Profile> students = List.of(
             new Profile(new Address("Ulan", "Gagarina", 45, 3)),
-            new Profile (new Address("Moscow", "Lenina", 5, 1)),
-            new Profile (new Address("Moscow", "Lenina", 5, 1))
+            new Profile(new Address("Moscow", "Lenina", 5, 1)),
+            new Profile(new Address("Moscow", "Lenina", 5, 1))
     );
     Profiles profiles = new Profiles();
     List<Address> stAddress = profiles.collect(students);
     assertThat(stAddress.size(), is(2));
+    assertThat(stAddress.get(0).getCity(), is("Moscow"));
 }
-
-    @Test
-    public void whenSortCollect() {
-        List<Profile> students = List.of(
-                new Profile(new Address("Ulan", "Gagarina", 45, 3)),
-                new Profile (new Address("Moscow", "Lenina", 5, 1)),
-                new Profile (new Address("Moscow", "Lenina", 5, 1))
-        );
-        Profiles profiles = new Profiles();
-        List<Address> stAddress = profiles.collect(students);
-        assertThat(stAddress.get(0).getCity(), is("Moscow"));
-    }
-
-
 }
