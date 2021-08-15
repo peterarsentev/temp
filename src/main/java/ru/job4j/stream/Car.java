@@ -9,6 +9,18 @@ public class Car {
     private String equipment;
     private int price;
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "model='" + model + '\'' +
+                ", type='" + type + '\'' +
+                ", allRoad=" + allRoad +
+                ", volumeEngine=" + volumeEngine +
+                ", equipment='" + equipment + '\'' +
+                ", price=" + price +
+                '}';
+    }
+
     static class Builder {
         private String model;
         private String type;
@@ -67,5 +79,6 @@ public class Car {
                 .buildEquipment("Lux")
                 .buildPrice(7_500_000)
                 .build();
+        System.out.println(car);
     }
 }
