@@ -4,6 +4,10 @@ public class Profile {
 
     private Address address;
 
+    public Profile(Address address) {
+        this.address = address;
+    }
+
     public Address getAddress() {
         return address;
     }
@@ -12,7 +16,4 @@ public class Profile {
         this.address = address;
     }
 
-    public Profile(Address address) {
-        this.address = address;
-    }
 }
