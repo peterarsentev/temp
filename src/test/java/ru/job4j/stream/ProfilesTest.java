@@ -19,7 +19,7 @@ public class ProfilesTest {
         );
         Profiles profiles = new Profiles();
         List<Address> stAddress = profiles.collect(students);
-        assertThat(stAddress.get(1).getStreet(), is("Lenina"));
+        assertThat(stAddress.get(1).getStreet(), is("Gagarina"));
     }
 
     @Test
