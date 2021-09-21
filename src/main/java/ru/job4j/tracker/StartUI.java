@@ -45,8 +45,7 @@ public class StartUI {
             actions.add(new FindByNameAction(output));
             actions.add(new ExitAction());
             new StartUI(output).init(input, tracker, actions);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

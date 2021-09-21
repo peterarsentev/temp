@@ -6,12 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class SqlTracker implements Store{
+public class SqlTracker implements Store {
 
     private Connection cn;
 
+    public SqlTracker() {
+    }
+
+    public SqlTracker(Connection cn) {
+        this.cn = cn;
+    }
+
     public void init() {
-        try (InputStream in = SqlTracker.class.getClassLoader().getResourceAsStream("app.properties")) {
+        try (InputStream in = SqlTracker.class.getClassLoader()
+                .getResourceAsStream("app.properties")) {
             Properties config = new Properties();
             config.load(in);
             Class.forName(config.getProperty("driver-class-name"));
@@ -95,7 +103,8 @@ public class SqlTracker implements Store{
     @Override
     public List<Item> findByName(String key) {
         List<Item> items = new ArrayList<>();
-        try (PreparedStatement statement = cn.prepareStatement("select * from items where name = ?")) {
+        try (PreparedStatement statement =
+                     cn.prepareStatement("select * from items where name = ?")) {
             statement.setString(1, key);
             statement.execute();
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -116,7 +125,8 @@ public class SqlTracker implements Store{
     @Override
     public Item findById(int id) {
         Item items = null;
-        try (PreparedStatement statement = cn.prepareStatement("select * from items where id = ?")) {
+        try (PreparedStatement statement =
+                     cn.prepareStatement("select * from items where id = ?")) {
             statement.setInt(1, id);
             statement.execute();
             try (ResultSet resultSet = statement.executeQuery()) {
