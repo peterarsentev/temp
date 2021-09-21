@@ -1,12 +1,10 @@
 package ru.job4j.tracker;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SingleTracker {
 
-    private Tracker tracker = null;
+    private Store tracker = null;
 
     public Item add(Item item) {
         return tracker.add(item);
