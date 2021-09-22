@@ -13,22 +13,7 @@ public class MemTracker implements Store {
     //private final Item[] items = new Item[100];
     private int ids = 1;
 
-    private Connection cn;
-
     public void init() {
-        try (InputStream in = SqlTracker.class.getClassLoader()
-                .getResourceAsStream("app.properties")) {
-            Properties config = new Properties();
-            config.load(in);
-            Class.forName(config.getProperty("driver-class-name"));
-            cn = DriverManager.getConnection(
-                    config.getProperty("url"),
-                    config.getProperty("username"),
-                    config.getProperty("password")
-            );
-        } catch (Exception e) {
-            throw new IllegalStateException(e);
-        }
     }
 
     public Item add(Item item) {

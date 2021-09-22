@@ -56,7 +56,7 @@ public class SqlTracker implements Store {
     public boolean replace(int id, Item item) {
         boolean rsl = false;
         try (PreparedStatement statement =
-                     cn.prepareStatement("UPDATE items SET name = ?, created = ? WHERE id > ?;")) {
+                     cn.prepareStatement("UPDATE items SET name = ?, created = ? WHERE id = ?;")) {
             statement.setString(1, item.getName());
             statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
             statement.setInt(3, id);
@@ -106,7 +106,6 @@ public class SqlTracker implements Store {
         try (PreparedStatement statement =
                      cn.prepareStatement("select * from items where name = ?")) {
             statement.setString(1, key);
-            statement.execute();
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     items.add(new Item(
@@ -146,6 +145,8 @@ public class SqlTracker implements Store {
 
     @Override
     public void close() throws Exception {
-
+        if (cn != null) {
+            cn.close();
+        }
     }
 }
