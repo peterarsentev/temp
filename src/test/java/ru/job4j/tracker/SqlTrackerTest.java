@@ -67,7 +67,7 @@ public class SqlTrackerTest {
         Item item = new Item("item");
         Item itemRep = new Item("itemRep");
         tracker.add(item);
-        tracker.replace(1, itemRep);
+        tracker.replace(item.getId(), itemRep);
         assertThat(tracker.findById(item.getId()).getName(), is(itemRep.getName()));
     }
 
