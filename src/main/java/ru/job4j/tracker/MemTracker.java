@@ -10,7 +10,6 @@ import java.util.Properties;
 
 public class MemTracker implements Store {
     private  final List<Item> items = new ArrayList<Item>();
-    //private final Item[] items = new Item[100];
     private int ids = 1;
 
     public void init() {
